@@ -8,8 +8,8 @@ const HELP = `
 `;
 
 module.exports = {
-  name: '--help',
+  name: `--help`,
   run() {
     console.info(HELP);
   },
-}
+};
