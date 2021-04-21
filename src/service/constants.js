@@ -48,12 +48,18 @@ const SumRestrict = {
   MAX: 100000,
 };
 
+const USER_ARGV_INDEX = 2;
+
+const DEFAULT_COMMAND = '--help';
+
 module.exports = {
+  DEFAULT_COMMAND,
   DEFAULT_COUNT,
   FILE_NAME,
   TITLES,
   SENTENCES,
   CATEGORIES,
+  USER_ARGV_INDEX,
   OfferType,
   PictureRestrict,
   SumRestrict,

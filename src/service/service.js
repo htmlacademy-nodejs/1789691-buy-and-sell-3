@@ -1,7 +1,7 @@
 'use strict';
 
 const {Cli} = require(`./cli`);
-const {FILE_NAME} = require(`./constants`);
+const {FILE_NAME, USER_ARGV_INDEX} = require(`./constants`);
 const fs = require(`fs`);
 
 const optionName = process.argv[2];
@@ -23,6 +23,9 @@ switch (optionName) {
       console.info(`Operation succeded. File has been created.`);
       process.exit();
     });
+    break;
+  case `--help`:
+    Cli[optionName].run();
     break;
   default:
     console.error(`Unknown option`);
