@@ -10,8 +10,7 @@ const optionValue = process.argv[3];
 console.log(`Option is:`, optionName);
 switch (optionName) {
   case `--version`:
-    const version = Cli[optionName].run();
-    console.info(`The current version is: ${version}`);
+    Cli[optionName].run();
     break;
   case `--generate`:
     const advertisements = Cli[optionName].run(optionValue);
