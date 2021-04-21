@@ -50,7 +50,7 @@ const SumRestrict = {
 
 const USER_ARGV_INDEX = 2;
 
-const DEFAULT_COMMAND = '--help';
+const DEFAULT_COMMAND = `--help`;
 
 module.exports = {
   DEFAULT_COMMAND,

@@ -3,6 +3,7 @@
 const {
   CATEGORIES,
   DEFAULT_COUNT,
+  FILE_NAME,
   SENTENCES,
   TITLES,
   OfferType,
@@ -15,6 +16,9 @@ const {
   getRandomInt,
   shuffle
 } = require(`../utils`);
+
+const fs = require(`fs`);
+
 
 const generateOffers = (count) => {
   return Array(count).fill({}).map(() => ({
@@ -31,6 +35,14 @@ module.exports = {
   name: `--generate`,
   run(count) {
     const countOffers = Number(count) || DEFAULT_COUNT;
-    return generateOffers(countOffers);
+    const advertisements = generateOffers(countOffers);
+    fs.writeFile(FILE_NAME, JSON.stringify(advertisements), (error) => {
+      if (error) {
+        console.error(`Can't write data to file. Error:`, error);
+        process.exit(1);
+      }
+      console.info(`Operation succeded. File has been created.`);
+      process.exit();
+    });
   },
 };

@@ -1,8 +1,7 @@
 'use strict';
 
 const {Cli} = require(`./cli`);
-const {FILE_NAME, USER_ARGV_INDEX} = require(`./constants`);
-const fs = require(`fs`);
+// const {USER_ARGV_INDEX} = require(`./constants`);
 
 const optionName = process.argv[2];
 const optionValue = process.argv[3];
@@ -13,15 +12,7 @@ switch (optionName) {
     Cli[optionName].run();
     break;
   case `--generate`:
-    const advertisements = Cli[optionName].run(optionValue);
-    fs.writeFile(FILE_NAME, JSON.stringify(advertisements), (error) => {
-      if (error) {
-        console.error(`Can't write data to file. Error:`, error);
-        process.exit(1);
-      }
-      console.info(`Operation succeded. File has been created.`);
-      process.exit();
-    });
+    Cli[optionName].run(optionValue);
     break;
   case `--help`:
     Cli[optionName].run();
