@@ -1,22 +1,14 @@
 'use strict';
 
 const {Cli} = require(`./cli`);
-// const {USER_ARGV_INDEX} = require(`./constants`);
+const {DEFAULT_COMMAND, USER_ARGV_INDEX} = require(`./constants`);
 
-const optionName = process.argv[2];
-const optionValue = process.argv[3];
-
-console.log(`Option is:`, optionName);
-switch (optionName) {
-  case `--version`:
-    Cli[optionName].run();
-    break;
-  case `--generate`:
-    Cli[optionName].run(optionValue);
-    break;
-  case `--help`:
-    Cli[optionName].run();
-    break;
-  default:
-    console.error(`Unknown option`);
+const userArguments = process.argv.slice(USER_ARGV_INDEX);
+const [userCommand] = userArguments;
+console.log(`userArguments:`, userArguments, userCommand);
+if (!userArguments.length || !Cli[userCommand]) {
+  Cli[DEFAULT_COMMAND].run();
+  process.exit(0);
 }
+
+Cli[userCommand].run(userArguments.slice(1));
