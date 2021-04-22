@@ -4,6 +4,7 @@ const {
   CATEGORIES,
   DEFAULT_COUNT,
   FILE_NAME,
+  MAX_OFFER_COUNT,
   SENTENCES,
   TITLES,
   ExitCode,
@@ -36,6 +37,11 @@ module.exports = {
   name: `--generate`,
   run(count) {
     const countOffers = Number(count) || DEFAULT_COUNT;
+
+    if (countOffers > MAX_OFFER_COUNT) {
+      console.error(`Не больше 1000 объявлений`);
+      process.exit(ExitCode.fail);
+    }
     const advertisements = generateOffers(countOffers);
     fs.writeFile(FILE_NAME, JSON.stringify(advertisements), (error) => {
       if (error) {

@@ -49,18 +49,19 @@ const SumRestrict = {
 };
 
 const USER_ARGV_INDEX = 2;
-
 const DEFAULT_COMMAND = `--help`;
+const MAX_OFFER_COUNT = 1000;
 
 const ExitCode = {
   success: 0,
   fail: 1,
-}
+};
 
 module.exports = {
   DEFAULT_COMMAND,
   DEFAULT_COUNT,
   FILE_NAME,
+  MAX_OFFER_COUNT,
   TITLES,
   SENTENCES,
   CATEGORIES,
