@@ -52,6 +52,11 @@ const USER_ARGV_INDEX = 2;
 
 const DEFAULT_COMMAND = `--help`;
 
+const ExitCode = {
+  success: 0,
+  fail: 1,
+}
+
 module.exports = {
   DEFAULT_COMMAND,
   DEFAULT_COUNT,
@@ -60,6 +65,7 @@ module.exports = {
   SENTENCES,
   CATEGORIES,
   USER_ARGV_INDEX,
+  ExitCode,
   OfferType,
   PictureRestrict,
   SumRestrict,

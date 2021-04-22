@@ -6,6 +6,7 @@ const {
   FILE_NAME,
   SENTENCES,
   TITLES,
+  ExitCode,
   OfferType,
   PictureRestrict,
   SumRestrict,
@@ -39,10 +40,10 @@ module.exports = {
     fs.writeFile(FILE_NAME, JSON.stringify(advertisements), (error) => {
       if (error) {
         console.error(`Can't write data to file. Error:`, error);
-        process.exit(1);
+        process.exit(ExitCode.fail);
       }
-      console.info(`Operation succeded. File has been created.`);
-      process.exit();
+      console.info(`Operation succeded. File has been created and contains ${advertisements.length} items.`);
+      process.exit(ExitCode.success);
     });
   },
 };
