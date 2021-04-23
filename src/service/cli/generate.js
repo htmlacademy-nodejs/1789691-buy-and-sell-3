@@ -26,7 +26,7 @@ const getCategories = () => {
   const categories = Array(categoryCount).fill({}).map(() => CATEGORIES[getRandomInt(0, CATEGORIES.length - 1)]);
   const uniqueCategories = [...new Set(categories)];
   return uniqueCategories;
-}
+};
 
 const generateOffers = (count) => {
   return Array(count).fill({}).map(() => ({
@@ -46,16 +46,16 @@ module.exports = {
 
     if (countOffers > MAX_OFFER_COUNT) {
       console.error(`Не больше 1000 объявлений`);
-      process.exit(ExitCode.fail);
+      process.exit(ExitCode.FAIL);
     }
     const advertisements = generateOffers(countOffers);
     fs.writeFile(FILE_NAME, JSON.stringify(advertisements), (error) => {
       if (error) {
         console.error(`Can't write data to file. Error:`, error);
-        process.exit(ExitCode.fail);
+        process.exit(ExitCode.FAIL);
       }
       console.info(`Operation succeded. File has been created and contains ${advertisements.length} items.`);
-      process.exit(ExitCode.success);
+      process.exit(ExitCode.SUCCESS);
     });
   },
 };
