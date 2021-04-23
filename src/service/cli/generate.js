@@ -53,7 +53,6 @@ module.exports = {
         process.exit(ExitCode.FAIL);
       }
       console.info(`Operation succeded. File has been created and contains ${advertisements.length} items.`);
-      process.exit(ExitCode.SUCCESS);
     });
   },
 };
