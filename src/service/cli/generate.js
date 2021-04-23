@@ -22,10 +22,8 @@ const {
 const fs = require(`fs`);
 
 const getCategories = () => {
-  const categoryCount = getRandomInt(1, CATEGORIES.length - 1);
-  const categories = Array(categoryCount).fill({}).map(() => CATEGORIES[getRandomInt(0, CATEGORIES.length - 1)]);
-  const uniqueCategories = [...new Set(categories)];
-  return uniqueCategories;
+  const categoryCount = getRandomInt(1, CATEGORIES.length);
+  return shuffle(CATEGORIES).slice(0, categoryCount);
 };
 
 const generateOffers = (count) => {
