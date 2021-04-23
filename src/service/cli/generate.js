@@ -21,10 +21,16 @@ const {
 
 const fs = require(`fs`);
 
+const getCategories = () => {
+  const categoryCount = getRandomInt(1, CATEGORIES.length - 1);
+  const categories = Array(categoryCount).fill({}).map(() => CATEGORIES[getRandomInt(0, CATEGORIES.length - 1)]);
+  const uniqueCategories = [...new Set(categories)];
+  return uniqueCategories;
+}
 
 const generateOffers = (count) => {
   return Array(count).fill({}).map(() => ({
-    category: [CATEGORIES[getRandomInt(0, CATEGORIES.length - 1)]],
+    category: getCategories(),
     description: shuffle(SENTENCES).slice(1, 5).join(` `),
     picture: getPictureFileName(getRandomInt(PictureRestrict.MIN, PictureRestrict.MAX)),
     title: TITLES[getRandomInt(0, TITLES.length - 1)],
