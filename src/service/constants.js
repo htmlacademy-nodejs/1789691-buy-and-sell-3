@@ -53,8 +53,8 @@ const DEFAULT_COMMAND = `--help`;
 const MAX_OFFER_COUNT = 1000;
 
 const ExitCode = {
-  success: 0,
-  fail: 1,
+  SUCCESS: 0,
+  FAIL: 1,
 };
 
 module.exports = {
