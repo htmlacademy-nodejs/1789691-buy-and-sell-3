@@ -20,6 +20,7 @@ const {
 } = require(`../utils`);
 
 const fs = require(`fs`);
+const chalk = require(`chalk`);
 
 const getCategories = () => {
   const categoryCount = getRandomInt(1, CATEGORIES.length - 1);
@@ -45,16 +46,16 @@ module.exports = {
     const countOffers = Number(count) || DEFAULT_COUNT;
 
     if (countOffers > MAX_OFFER_COUNT) {
-      console.error(`Не больше 1000 объявлений`);
+      console.error(chalk.red(`Не больше 1000 объявлений`));
       process.exit(ExitCode.FAIL);
     }
     const advertisements = generateOffers(countOffers);
     fs.writeFile(FILE_NAME, JSON.stringify(advertisements), (error) => {
       if (error) {
-        console.error(`Can't write data to file. Error:`, error);
+        console.error(chalk.red(`Can't write data to file. Error:`), error);
         process.exit(ExitCode.FAIL);
       }
-      console.info(`Operation succeded. File has been created and contains ${advertisements.length} items.`);
+      console.info(chalk.green(`Operation succeded. File has been created and contains ${advertisements.length} items.`));
       process.exit(ExitCode.SUCCESS);
     });
   },
