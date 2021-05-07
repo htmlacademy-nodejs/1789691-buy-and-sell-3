@@ -4,7 +4,7 @@ const chalk = require(`chalk`);
 const http = require(`http`);
 const fs = require(`fs`).promises;
 
-const { DEFAULT_PORT, FILE_NAME, HttpCodes } = require(`../constants`);
+const {DEFAULT_PORT, FILE_NAME, HttpCodes} = require(`../constants`);
 
 const sendRequest = (res, statusCode, message) => {
   const template = `
@@ -16,15 +16,15 @@ const sendRequest = (res, statusCode, message) => {
       <body>${message}</body>
     </html>`.trim();
   res.writeHead(statusCode, {
-    'Content-Type': 'text/html; charset=UTF8'
+    'Content-Type': `text/html; charset=UTF8`
   });
   res.end(template);
-}
+};
 
 const onClientConnect = async (req, res) => {
   const notFoundMessage = `Not found`;
 
-  switch(req.url) {
+  switch (req.url) {
     case `/`:
       try {
         const content = await fs.readFile(FILE_NAME);
@@ -38,14 +38,14 @@ const onClientConnect = async (req, res) => {
     default:
       sendRequest(res, HttpCodes.NOT_FOUND, notFoundMessage);
   }
-}
+};
 
 module.exports = {
   name: `--server`,
   run(args) {
     const [customPort] = args;
     const port = Number(customPort) || DEFAULT_PORT;
-    const server = http.createServer(onClientConnect)
+    http.createServer(onClientConnect)
       .listen(port)
       .on(`listening`, (error) => {
         if (error) {

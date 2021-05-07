@@ -33,7 +33,7 @@ const HttpCodes = {
   FORBIDDEN: 403,
   NOT_FOUND: 404,
   UNAUTHORIZED: 401,
-}
+};
 
 module.exports = {
   DEFAULT_COMMAND,
